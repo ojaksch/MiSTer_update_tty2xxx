@@ -30,13 +30,14 @@ fi
 
 
 # Check and update INI files if neccessary
+! [ -e ${SCRIPTPATH}/update_tty2xxx_user.ini ] && touch ${SCRIPTPATH}/update_tty2xxx_user.ini
 wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx_system.ini" -O /tmp/update_tty2xxx_system.ini
-. /tmp/update_tty2xxx_system.ini
 cmp -s /tmp/update_tty2xxx_system.ini "${SCRIPTPATH}/update_tty2xxx_system.ini"
 if [ "${?}" -gt "0" ]; then
-    mv /tmp/update_tty2xxx_system.ini "${SCRIPTPATH}/update_tty2xxx_system.ini"
+  mv /tmp/update_tty2xxx_system.ini "${SCRIPTPATH}/update_tty2xxx_system.ini"
+  . ${SCRIPTPATH}/update_tty2xxx_system.ini
+  . ${SCRIPTPATH}/update_tty2xxx_user.ini
 fi
-! [ -e ${SCRIPTPATH}/update_tty2xxx_user.ini ] && touch ${SCRIPTPATH}/update_tty2xxx_user.ini
 
 
 
