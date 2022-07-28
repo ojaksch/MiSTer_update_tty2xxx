@@ -36,7 +36,7 @@ cmp -s /tmp/update_tty2xxx_system.ini "${SCRIPTPATH}/update_tty2xxx_system.ini"
 if [ "${?}" -gt "0" ]; then
     mv /tmp/update_tty2xxx_system.ini "${SCRIPTPATH}/update_tty2xxx_system.ini"
 fi
-! [ -e ${SCRIPTPATH}/tty2oled-user.ini ] && touch ${SCRIPTPATH}/tty2oled-user.ini
+! [ -e ${SCRIPTPATH}/update_tty2xxx_user.ini ] && touch ${SCRIPTPATH}/update_tty2xxx_user.ini
 
 
 
