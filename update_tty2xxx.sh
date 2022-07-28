@@ -12,6 +12,18 @@ runupdate() {
   [ "${CLEAR}" = "yes" ] && clear
 }
 
+wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx.sh" -O /tmp/update_tty2xxx.sh
+check4error "${?}"
+cmp -s /tmp/update_tty2xxx.sh /media/fat/Scripts/update_tty2xxx.sh
+if [ "${?}" -gt "0" ] && [ -s /tmp/update_tty2xxx.sh ]; then
+    echo -e "${fyellow}Downloading Updater-Update ${fmagenta}${freset}"
+    mv -f /tmp/update_tty2xxx.sh /media/fat/Scripts/update_tty2xxx.sh
+    exec /media/fat/Scripts/update_tty2xxx.sh
+    exit 255
+else
+    rm /tmp/update_tty2xxx.sh
+fi
+
 if [ "${i2c2oled}" = "yes" ] && [ -e /media/fat/Scripts/update_i2c2oled.sh ]; then
   runupdate update_i2c2oled.sh
 fi
