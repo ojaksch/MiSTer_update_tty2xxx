@@ -3,13 +3,13 @@
 . /media/fat/Scripts/update_tty2xxx.ini
 
 runupdate() {
-  echo "${fyellow}${fblink}${fbold}RUNNING ${1}${freset}"
+  [ "${CLEAR}" = "yes" ] && clear
+  echo -e "${fyellow}${fblink}${fbold}RUNNING ${1}${freset}"
   "/media/fat/Scripts/${1}"
   if [ "${PAUSE}" = "yes" ]; then
-    echo "${fyellow}${fblink}${fbold}Press ENTER to continue.${freset}"
+    echo -e "${fyellow}${fblink}${fbold}Press ENTER to continue.${freset}"
     read dummy
   fi
-  [ "${CLEAR}" = "yes" ] && clear
 }
 
 wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx.sh" -O /tmp/update_tty2xxx.sh
