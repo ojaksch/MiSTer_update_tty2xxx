@@ -1,7 +1,7 @@
 #!/bin/bash
 
-[ -e /media/fat/Scripts/tty2oled-system.ini ] && . /media/fat/Scripts/update_tty2xxx_system.ini
-[ -e /media/fat/Scripts/tty2oled-user.ini ] && . /media/fat/Scripts/update_tty2xxx_user.ini
+[ -e /media/fat/Scripts/update_tty2xxx_system.ini ] && . /media/fat/Scripts/update_tty2xxx_system.ini
+[ -e /media/fat/Scripts/update_tty2xxx_user.ini ] && . /media/fat/Scripts/update_tty2xxx_user.ini
 
 runupdate() {
   [ "${CLEAR}" = "yes" ] && clear
