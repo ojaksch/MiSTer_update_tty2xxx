@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /media/fat/Scripts/
+. /media/fat/Scripts/update_tty2xxx.ini
 
 runupdate() {
   echo "${fyellow}${fblink}${fbold}RUNNING ${1}${freset}"
@@ -13,7 +13,6 @@ runupdate() {
 }
 
 wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx.sh" -O /tmp/update_tty2xxx.sh
-check4error "${?}"
 cmp -s /tmp/update_tty2xxx.sh /media/fat/Scripts/update_tty2xxx.sh
 if [ "${?}" -gt "0" ] && [ -s /tmp/update_tty2xxx.sh ]; then
     echo -e "${fyellow}Downloading Updater-Update ${fmagenta}${freset}"
