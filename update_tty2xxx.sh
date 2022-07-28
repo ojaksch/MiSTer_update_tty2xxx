@@ -14,6 +14,7 @@ runupdate() {
 }
 
 
+
 # Update the updater if neccessary
 wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx.sh" -O /tmp/update_tty2xxx.sh
 cmp -s /tmp/update_tty2xxx.sh ${SCRIPTPATH}/update_tty2xxx.sh
@@ -27,13 +28,16 @@ else
 fi
 
 
+
 # Check and update INI files if neccessary
 wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx_system.ini" -O /tmp/update_tty2xxx_system.ini
 . /tmp/update_tty2xxx_system.ini
-cmp -s /tmp/update_tty2xxx_system.ini "${TTY2OLED_PATH}/update_tty2xxx_system.ini"
+cmp -s /tmp/update_tty2xxx_system.ini "${SCRIPTPATH}/update_tty2xxx_system.ini"
 if [ "${?}" -gt "0" ]; then
-    mv /tmp/update_tty2xxx_system.ini "${TTY2OLED_PATH}/update_tty2xxx_system.ini"
+    mv /tmp/update_tty2xxx_system.ini "${SCRIPTPATH}/update_tty2xxx_system.ini"
 fi
+! [ -e ${SCRIPTPATH}/tty2oled-user.ini ] && touch ${SCRIPTPATH}/tty2oled-user.ini
+
 
 
 if [ "${i2c2oled}" = "yes" ] && [ -e ${SCRIPTPATH}/update_i2c2oled.sh ]; then
