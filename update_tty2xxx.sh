@@ -3,6 +3,9 @@
 [ -e /media/fat/Scripts/update_tty2xxx_system.ini ] && . /media/fat/Scripts/update_tty2xxx_system.ini
 [ -e /media/fat/Scripts/update_tty2xxx_user.ini ] && . /media/fat/Scripts/update_tty2xxx_user.ini
 
+CORENAME=$(</tmp/CORENAME)
+echo "000-UPDATE" > /tmp/CORENAME
+
 runupdate() {
   [ "${CLEAR}" = "yes" ] && clear
   echo -e "${fyellow}${fblink}${fbold}RUNNING ${1}${freset}"
@@ -61,3 +64,4 @@ if [ "${update_all}" = "yes" ] && [ -e ${SCRIPTPATH}/update_all.sh ]; then
 fi
 
 echo -e "${fyellow}Done...Have fun!${fmagenta}${freset}"
+echo "${CORENAME}" > /tmp/CORENAME
