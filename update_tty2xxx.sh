@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cd /etc/ssl/certs
+wget -Nq https://curl.se/ca/cacert.pem
+cd /tmp
+
 [ -e /media/fat/Scripts/update_tty2xxx_system.ini ] && . /media/fat/Scripts/update_tty2xxx_system.ini
 [ -e /media/fat/Scripts/update_tty2xxx_user.ini ] && . /media/fat/Scripts/update_tty2xxx_user.ini
 
