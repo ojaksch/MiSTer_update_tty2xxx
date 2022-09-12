@@ -63,6 +63,9 @@ fi
 if [ "${tty2rgb}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2rgb.sh ]; then
   runupdate update_tty2rgb.sh
 fi
+if [ "${web2rgbmatrix}" = "yes" ] && [ -e ${SCRIPTPATH}/update_web2rgbmatrix.sh ]; then
+  runupdate update_web2rgbmatrix.sh
+fi
 if [ "${update_all}" = "yes" ] && [ -e ${SCRIPTPATH}/update_all.sh ]; then
   runupdate update_all.sh
 fi
