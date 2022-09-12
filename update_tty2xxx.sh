@@ -7,7 +7,7 @@ cd /tmp
 [ -e /media/fat/Scripts/update_tty2xxx_system.ini ] && . /media/fat/Scripts/update_tty2xxx_system.ini
 [ -e /media/fat/Scripts/update_tty2xxx_user.ini ] && . /media/fat/Scripts/update_tty2xxx_user.ini
 
-CORENAME=$(</tmp/CORENAME)
+cp -a /tmp/CORENAME /tmp/CORENAME.old
 echo "000-UPDATE" > /tmp/CORENAME
 
 runupdate() {
@@ -51,4 +51,4 @@ fi
 [ "${update_all}" = "yes" ] && [ -e ${SCRIPTPATH}/update_all.sh ] && runupdate update_all.sh
 
 echo -e "${fyellow}Done...Have fun!${fmagenta}${freset}"
-echo "${CORENAME}" > /tmp/CORENAME
+cp -a /tmp/CORENAME.old /tmp/CORENAME
