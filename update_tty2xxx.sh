@@ -20,8 +20,6 @@ runupdate() {
   fi
 }
 
-
-
 # Update the updater if neccessary
 wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx.sh" -O /tmp/update_tty2xxx.sh
 cmp -s /tmp/update_tty2xxx.sh ${SCRIPTPATH}/update_tty2xxx.sh
@@ -34,8 +32,6 @@ else
     rm /tmp/update_tty2xxx.sh
 fi
 
-
-
 # Check and update INI files if neccessary
 ! [ -e ${SCRIPTPATH}/update_tty2xxx_user.ini ] && touch ${SCRIPTPATH}/update_tty2xxx_user.ini
 wget ${NODEBUG} --no-cache "${REPOSITORY_URL}/update_tty2xxx_system.ini" -O /tmp/update_tty2xxx_system.ini
@@ -46,29 +42,13 @@ if [ "${?}" -gt "0" ]; then
   . ${SCRIPTPATH}/update_tty2xxx_user.ini
 fi
 
-
-
-if [ "${i2c2oled}" = "yes" ] && [ -e ${SCRIPTPATH}/update_i2c2oled.sh ]; then
-  runupdate update_i2c2oled.sh
-fi
-if [ "${tty2oled}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2oled.sh ]; then
-  runupdate update_tty2oled.sh
-fi
-if [ "${tty2tft}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2tft.sh ]; then
-  runupdate update_tty2tft.sh
-fi
-if [ "${tty2rpi}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2rpi.sh ]; then
-  runupdate update_tty2rpi.sh
-fi
-if [ "${tty2rgb}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2rgb.sh ]; then
-  runupdate update_tty2rgb.sh
-fi
-if [ "${web2rgbmatrix}" = "yes" ] && [ -e ${SCRIPTPATH}/update_web2rgbmatrix.sh ]; then
-  runupdate update_web2rgbmatrix.sh
-fi
-if [ "${update_all}" = "yes" ] && [ -e ${SCRIPTPATH}/update_all.sh ]; then
-  runupdate update_all.sh
-fi
+[ "${i2c2oled}" = "yes" ] && [ -e ${SCRIPTPATH}/update_i2c2oled.sh ] && runupdate update_i2c2oled.sh
+[ "${tty2oled}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2oled.sh ] && runupdate update_tty2oled.sh
+[ "${tty2tft}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2tft.sh ] && runupdate update_tty2tft.sh
+[ "${tty2rpi}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2rpi.sh ] && runupdate update_tty2rpi.sh
+[ "${tty2rgb}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2rgb.sh ] && runupdate update_tty2rgb.sh
+[ "${web2rgbmatrix}" = "yes" ] && [ -e ${SCRIPTPATH}/update_web2rgbmatrix.sh ] && runupdate update_web2rgbmatrix.sh
+[ "${update_all}" = "yes" ] && [ -e ${SCRIPTPATH}/update_all.sh ] && runupdate update_all.sh
 
 echo -e "${fyellow}Done...Have fun!${fmagenta}${freset}"
 echo "${CORENAME}" > /tmp/CORENAME
