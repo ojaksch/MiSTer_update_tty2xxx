@@ -48,6 +48,7 @@ fi
 [ "${tty2rpi}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2rpi.sh ] && runupdate update_tty2rpi.sh
 [ "${tty2rgb}" = "yes" ] && [ -e ${SCRIPTPATH}/update_tty2rgb.sh ] && runupdate update_tty2rgb.sh
 [ "${web2rgbmatrix}" = "yes" ] && [ -e ${SCRIPTPATH}/update_web2rgbmatrix.sh ] && runupdate update_web2rgbmatrix.sh
+[ "${sysinfo}" = "yes" ] && [ -e ${SCRIPTPATH}/update_sysinfo2oled.sh ] && runupdate update_sysinfo2oled.sh
 [ "${update_all}" = "yes" ] && [ -e ${SCRIPTPATH}/update_all.sh ] && runupdate update_all.sh
 
 echo -e "${fyellow}Done...Have fun!${fmagenta}${freset}"
